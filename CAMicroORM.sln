@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAMicroORM", "CAMicroORM.csproj", "{10926418-CBDF-4ADE-B40F-F9690C4138BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10926418-CBDF-4ADE-B40F-F9690C4138BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10926418-CBDF-4ADE-B40F-F9690C4138BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10926418-CBDF-4ADE-B40F-F9690C4138BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10926418-CBDF-4ADE-B40F-F9690C4138BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A190FF9-80F1-40F6-A008-CE1C0AEC68B3}
+	EndGlobalSection
+EndGlobal
