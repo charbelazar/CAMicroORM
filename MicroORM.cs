@@ -12,28 +12,40 @@ namespace CAMicroORM
     {
 
         public static IEnumerable<T> MapObjects<T>(this SqlConnection cnsql, string strsql) where T : new()
-        {           
+        {
+           
                 if (cnsql.State == ConnectionState.Closed) cnsql.Open();
                 var cmsql = cnsql.CreateCommand();
                 cmsql.CommandText = strsql;
                 var Props = typeof(T).GetProperties().ToList();
-            using (SqlDataAdapter da = new SqlDataAdapter(strsql, cnsql))
-            {
-                using (DataTable dt = new DataTable())
+                using (SqlDataAdapter da = new SqlDataAdapter(strsql, cnsql))
                 {
-                    da.Fill(dt);        
-                    foreach(DataRow dr in dt.Rows)
+                    using (DataTable dt = new DataTable())
                     {
-                        var CurrentModelToReturn = new T();
-                        Props.ForEach(currentProperty => {                         
-                                currentProperty.SetValue(CurrentModelToReturn, dr[currentProperty.Name]);
+                        da.Fill(dt);
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            var CurrentModelToReturn = new T();
+                            Props.ForEach(currentProperty => {
+                                try
+                                {
+                                    currentProperty.SetValue(CurrentModelToReturn, dr[currentProperty.Name]);
+                                }
+                                catch (Exception)
+                                {
+
+                                    throw;
+                                }
                             });
-                        yield return CurrentModelToReturn;
+                            yield return CurrentModelToReturn;
+                        }
                     }
                 }
             }
            
-          }
+              
+           
+          
 
         public static int InsertObjects<T>(this SqlConnection cnsql,  string TableName = "" , params T[] Given) where T : new()
         {
