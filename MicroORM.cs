@@ -21,13 +21,11 @@ namespace CAMicroORM
             {
                 using (DataTable dt = new DataTable())
                 {
-                    da.Fill(dt);
-                    var ListOfColumnsInDataTable = dt.Columns.Cast<DataColumn>().Select(c => c.ColumnName);
+                    da.Fill(dt);        
                     foreach(DataRow dr in dt.Rows)
                     {
                         var CurrentModelToReturn = new T();
-                        Props.ForEach(currentProperty => {
-                            if (ListOfColumnsInDataTable.Contains(currentProperty.Name))
+                        Props.ForEach(currentProperty => {                         
                                 currentProperty.SetValue(CurrentModelToReturn, dr[currentProperty.Name]);
                             });
                         yield return CurrentModelToReturn;
